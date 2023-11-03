@@ -58,14 +58,14 @@ def get_hash_info(hash):
 def convert_hash(path):
     try:
        with open(path, 'rb') as f:
-         hashsha256 = hashlib.sha256()
-         for data in iter(lambda :f.read(8192), b'') :
+        hashsha256 = hashlib.sha256()
+        for data in iter(lambda :f.read(8192), b'') :
             hashsha256.update(data)
-            hash_file = hashsha256.digest()
-            if check_hash(hash_file) :
-                return get_hash_info(hash_file)
-            else:
-                return None
+        hash_file = hashsha256.digest()
+        if check_hash(hash_file) :
+            return get_hash_info(hash_file)
+        else:
+            return None
     except :
         return None 
     
